@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 export default function HomeMap() {
   return (
     <View>
-      <Text></Text>
+      <Text>gggg</Text>
     </View>
   );
 }

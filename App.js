@@ -14,6 +14,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from './src/screens/HomeScrean';
+import DestinationSearch from './src/screens/DestinationSearch';
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -25,7 +26,8 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <HomeScreen />
+      {/* <HomeScreen /> */}
+      <DestinationSearch />
     </SafeAreaView>
   );
 };
