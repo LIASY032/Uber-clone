@@ -1,23 +1,100 @@
-import React from 'react';
-import {View, Text, TextInput} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, TextInput, SafeAreaView} from 'react-native';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
+import {useNavigation} from '@react-navigation/native';
+
 import styles from './styles.js';
+import PlaceRow from './PlaceRow';
 
-export default function DestinationSearch() {
-  const [originPlace, setOriginPlace] = React.useState(null);
-  const [destinationPlace, setDestinationPlace] = React.useState(null);
+const homePlace = {
+  description: 'Home',
+  geometry: {location: {lat: 48.8152937, lng: 2.4597668}},
+};
+const workPlace = {
+  description: 'Work',
+  geometry: {location: {lat: 48.8496818, lng: 2.2940881}},
+};
+
+const DestinationSearch = props => {
+  const [originPlace, setOriginPlace] = useState(null);
+  const [destinationPlace, setDestinationPlace] = useState(null);
+
+  //   const navigation = useNavigation();
+
+  //   const checkNavigation = () => {
+  //     if (originPlace && destinationPlace) {
+  //       navigation.navigate('SearchResults', {
+  //         originPlace,
+  //         destinationPlace,
+  //       });
+  //     }
+  //   };
+
+  //   useEffect(() => {
+  //     checkNavigation();
+  //   }, [originPlace, destinationPlace]);
+
   return (
-    <View style={styles.container}>
-      <TextInput style={styles.textInput} placeholder="From" />
-      <TextInput style={styles.textInput} placeholder="Where to?" />
+    <SafeAreaView>
+      <View style={styles.container}>
+        <GooglePlacesAutocomplete
+          placeholder="Where from?"
+          onPress={(data, details = null) => {
+            console.log(data);
+            console.log(details);
+            setOriginPlace({data, details});
+          }}
+          enablePoweredByContainer={false}
+          suppressDefaultStyles
+          currentLocation={true}
+          currentLocationLabel="Current location"
+          styles={{
+            textInput: styles.textInput,
+            container: styles.autocompleteContainer,
+            listView: styles.listView,
+            separator: styles.separator,
+          }}
+          fetchDetails
+          query={{
+            key: 'AIzaSyCXnx5D8EE_ZL0f-hx8sPvIvSRkzOJXeVk',
+            language: 'en',
+          }}
+          renderRow={data => <PlaceRow data={data} />}
+          renderDescription={data => data.description || data.vicinity}
+          predefinedPlaces={[homePlace, workPlace]}
+        />
 
-      <GooglePlacesAutocomplete
-        placeholder="Search"
-        onPress={(data, detail = null) => {
-          console.log(data, detail);
-        }}
-        query={{key: 'AIzaSyD0kb2Jbd7T__TgfHpFY12TABgTxjtSZ8k', language: 'en'}}
-      />
-    </View>
+        <GooglePlacesAutocomplete
+          placeholder="Where to?"
+          onPress={(data, details = null) => {
+            setDestinationPlace({data, details});
+          }}
+          enablePoweredByContainer={false}
+          suppressDefaultStyles
+          styles={{
+            textInput: styles.textInput,
+            container: {
+              ...styles.autocompleteContainer,
+              top: 55,
+            },
+            separator: styles.separator,
+          }}
+          fetchDetails
+          query={{
+            key: 'AIzaSyCXnx5D8EE_ZL0f-hx8sPvIvSRkzOJXeVk',
+            language: 'en',
+          }}
+          renderRow={data => <PlaceRow data={data} />}
+        />
+
+        <View style={styles.circle} />
+        {/* Line between dots */}
+        <View style={styles.line} />
+        {/* Square near Destination input */}
+        <View style={styles.square} />
+      </View>
+    </SafeAreaView>
   );
-}
+};
+
+export default DestinationSearch;
