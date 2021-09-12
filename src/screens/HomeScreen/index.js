@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Dimensions} from 'react-native';
 import HomeMap from '../../components/HomeMap';
 import CovidMessage from '../../components/CovidMessage';
-// import HomeSearch from '../../components/HomeSearch';
+import HomeSearch from '../../components/HomeSearch';
 
 export default function HomeScreen(props) {
   return (
@@ -11,7 +11,7 @@ export default function HomeScreen(props) {
         <HomeMap />
       </View>
       <CovidMessage />
-      {/* <HomeSearch /> */}
+      <HomeSearch />
     </View>
   );
 }

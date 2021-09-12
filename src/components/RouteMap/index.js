@@ -6,13 +6,13 @@ const GOOGLE_MAPS_APIKEY = 'AIzaSyCXnx5D8EE_ZL0f-hx8sPvIvSRkzOJXeVk';
 
 const RouteMap = ({origin, destination}) => {
   const originLoc = {
-    latitude: 28.450627,
-    longitude: -16.263045,
+    latitude: origin.details.geometry.location.lat,
+    longitude: origin.details.geometry.location.lng,
   };
 
   const destinationLoc = {
-    latitude: 28.450127,
-    longitude: -16.269045,
+    latitude: destination.details.geometry.location.lat,
+    longitude: destination.details.geometry.location.lng,
   };
 
   return (

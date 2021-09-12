@@ -19,20 +19,20 @@ const DestinationSearch = props => {
   const [originPlace, setOriginPlace] = useState(null);
   const [destinationPlace, setDestinationPlace] = useState(null);
 
-  //   const navigation = useNavigation();
+  const navigation = useNavigation();
 
-  //   const checkNavigation = () => {
-  //     if (originPlace && destinationPlace) {
-  //       navigation.navigate('SearchResults', {
-  //         originPlace,
-  //         destinationPlace,
-  //       });
-  //     }
-  //   };
+  const checkNavigation = () => {
+    if (originPlace && destinationPlace) {
+      navigation.navigate('SearchResult', {
+        originPlace,
+        destinationPlace,
+      });
+    }
+  };
 
-  //   useEffect(() => {
-  //     checkNavigation();
-  //   }, [originPlace, destinationPlace]);
+  useEffect(() => {
+    checkNavigation();
+  }, [originPlace, destinationPlace]);
 
   return (
     <SafeAreaView>

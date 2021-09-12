@@ -6,6 +6,7 @@ export default function HomeMap() {
     <MapView
       style={{height: '100%', width: '100%'}}
       provider={PROVIDER_GOOGLE}
+      showsUserLocation={true}
       initialRegion={{
         latitude: 37.78825,
         longitude: -122.4324,
