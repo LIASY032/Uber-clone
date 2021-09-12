@@ -28,6 +28,11 @@ import Geolocation from '@react-native-community/geolocation';
 import HomeNavigator from './src/navigation/Home';
 import RootNavigator from './src/navigation/Root';
 
+import Amplify from 'aws-amplify';
+import awsmobile from './aws-exports';
+
+Amplify.configure(awsmobile);
+
 navigator.geolocation = require('@react-native-community/geolocation');
 const App: () => Node = () => {
   async function androidPermission() {

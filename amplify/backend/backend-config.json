@@ -1,0 +1,9 @@
+{
+  "function": {
+    "uber66b4857a66b4857aPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  }
+}
