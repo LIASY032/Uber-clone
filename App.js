@@ -11,7 +11,6 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import type {Node} from 'react';
 import {
-  SafeAreaView,
   StatusBar,
   useColorScheme,
   PermissionsAndroid,
@@ -20,17 +19,18 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-import HomeScreen from './src/screens/HomeScreen';
-import DestinationSearch from './src/screens/DestinationSearch';
-import SearchResult from './src/screens/SearchResult';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+// import HomeScreen from './src/screens/HomeScreen';
+// import DestinationSearch from './src/screens/DestinationSearch';
+// import SearchResult from './src/screens/SearchResult';
 import Geolocation from '@react-native-community/geolocation';
-import HomeNavigator from './src/navigation/Home';
+// import HomeNavigator from './src/navigation/Home';
 import RootNavigator from './src/navigation/Root';
 
 import Amplify from 'aws-amplify';
-import awsmobile from './aws-exports';
 
+import {withAuthenticator} from 'aws-amplify-react-native';
+import awsmobile from './src/aws-exports';
 Amplify.configure(awsmobile);
 
 navigator.geolocation = require('@react-native-community/geolocation');
